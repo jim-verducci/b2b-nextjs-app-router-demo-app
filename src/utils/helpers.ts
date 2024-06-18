@@ -21,11 +21,13 @@ function base64URLEncode(str: string): string {
 
 export function parseTenantSubdomain(req: NextRequest, rootDomain: string): string {
   const host = req.headers.get('host');
+  console.log('HOST: ', host, rootDomain, host!.substring(host!.indexOf('.') + 1));
   return host!.substring(host!.indexOf('.') + 1) === rootDomain ? host!.substring(0, host!.indexOf('.')) : '';
 }
 
 export function resolveTenantDomain(req: NextRequest, useTenantSubdomains: boolean, rootDomain: string): string {
   if (useTenantSubdomains) {
+    console.log('USE TENANT SUBDOMAINS');
     return parseTenantSubdomain(req, rootDomain);
   }
 

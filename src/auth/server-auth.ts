@@ -41,6 +41,7 @@ export async function login(req: NextRequest, config: LoginConfig = {}): Promise
   let tenantDomainName: string = '';
   tenantDomainName = resolveTenantDomain(req, !IS_LOCALHOST, INVOTASTIC_HOST);
   if (!tenantDomainName) {
+    console.log('NO TENANT DOMAIN NAME RESOLVED!!!');
     return NextResponse.redirect(APPLICATION_LOGIN_URL, { status: 302, headers: NO_CACHE_HEADERS });
   }
 
@@ -63,6 +64,7 @@ export async function login(req: NextRequest, config: LoginConfig = {}): Promise
     scopes: ['openid', 'offline_access', 'profile', 'email', 'roles'],
     tenantDomainName,
   });
+  console.log('AUTHORIZE URL: ', authorizeUrl);
 
   // Perform the redirect to Wristband's Authorize Endpoint.
   return NextResponse.redirect(authorizeUrl, { status: 302, headers: NO_CACHE_HEADERS });
