@@ -91,7 +91,7 @@ export async function callback(req: NextRequest): Promise<CallbackResult> {
   const appLoginUrl: string = APPLICATION_LOGIN_URL;
   const tenantSubdomain: string = !IS_LOCALHOST ? parseTenantSubdomain(req, INVOTASTIC_HOST) : '';
   let tenantLoginUrl: string =
-    !IS_LOCALHOST && !!tenantSubdomain ? `http://${tenantSubdomain}${INVOTASTIC_HOST}/api/auth/login` : '';
+    !IS_LOCALHOST && !!tenantSubdomain ? `https://${tenantSubdomain}${INVOTASTIC_HOST}/api/auth/login` : '';
 
   // Make sure the login state cookie exists, extract it, and set it to be cleared by the server.
   const loginStateCookie: string = getAndClearLoginStateCookie(req);
@@ -114,14 +114,14 @@ export async function callback(req: NextRequest): Promise<CallbackResult> {
   if (!IS_LOCALHOST && tenantSubdomain !== tenantDomainName) {
     console.log('REDIRECT 02!!');
     return {
-      redirectUrl: `http://${tenantDomainName}.${INVOTASTIC_HOST}/api/auth/login`,
+      redirectUrl: `https://${tenantDomainName}.${INVOTASTIC_HOST}/api/auth/login`,
       result: CallbackResultType.REDIRECT_REQUIRED,
     };
   }
 
   tenantLoginUrl = !IS_LOCALHOST
     ? tenantLoginUrl
-    : `http://${INVOTASTIC_HOST}/api/auth/login?tenant_domain=${tenantDomainName}`;
+    : `https://${INVOTASTIC_HOST}/api/auth/login?tenant_domain=${tenantDomainName}`;
 
   // Check for any potential error conditions
   if (paramState !== cookieState) {
