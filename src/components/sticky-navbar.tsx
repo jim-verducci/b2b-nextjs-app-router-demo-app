@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
-import Logo from '../../public/logo.png';
+import Logo from '../../public/invotastic-logo.png';
 import { clientRedirectToLogout } from '@/auth/client-auth';
 
 export function Navbar() {
