@@ -8,7 +8,7 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import Logo from '../../public/logo.png';
 import { clientRedirectToLogout } from '@/auth/client-auth';
 
-const Navbar = () => {
+export function Navbar() {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const handleNav = () => {
     setMenuOpen(!menuOpen);
@@ -77,6 +77,4 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
