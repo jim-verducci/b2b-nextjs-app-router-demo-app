@@ -51,7 +51,7 @@ export async function login(req: NextRequest, config: LoginConfig = {}): Promise
 
   // Clear any stale login state cookies and add a new one for the current request.
   const encryptedLoginState: string = await encryptLoginState(loginState, LOGIN_STATE_COOKIE_SECRET);
-  createLoginStateCookie(loginState.state, encryptedLoginState, true);
+  createLoginStateCookie(loginState.state, encryptedLoginState, false);
 
   // Create the Wristband Authorize Endpoint URL which the user will get redirectd to.
   const authorizeUrl: string = getAuthorizeUrl(req, {

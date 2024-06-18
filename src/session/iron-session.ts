@@ -23,7 +23,7 @@ export const sessionOptions: SessionOptions = {
     path: '/',
     sameSite: 'lax',
     // NOTE: If deploying your own app to production, do not disable secure cookies.
-    secure: false,
+    secure: true,
   },
 };
 
