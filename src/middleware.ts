@@ -21,8 +21,8 @@ export async function middleware(req: NextRequest) {
   const session = await middlewareGetSession(req, res);
   const { expiresAt, isAuthenticated, refreshToken } = session;
 
-  const returnUrl = `http://${host}${pathname}`;
-  const loginUrl = `http://${host}/api/auth/login?return_url=${returnUrl}`;
+  const returnUrl = `https://${host}${pathname}`;
+  const loginUrl = `https://${host}/api/auth/login?return_url=${returnUrl}`;
 
   // Send users to the login page if they attempt to access protected paths when unauthenticated.
   if (!isAuthenticated) {

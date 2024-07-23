@@ -1,9 +1,7 @@
 export const IS_LOCALHOST: boolean = process.env.DOMAIN_FORMAT === 'LOCALHOST';
-export const INVOTASTIC_HOST: string = IS_LOCALHOST ? 'localhost:6001' : 'business.invotastic.com:6001';
-const authCallbackTenantDomain = IS_LOCALHOST ? '' : '{tenant_domain}.';
+export const INVOTASTIC_HOST: string = IS_LOCALHOST ? 'localhost:6001' : 'business.invotastic.xyz';
 
 export const APPLICATION_LOGIN_URL: string = `https://${process.env.APPLICATION_DOMAIN}/login`;
-export const AUTH_CALLBACK_URL: string = `http://${authCallbackTenantDomain}${INVOTASTIC_HOST}/api/auth/callback`;
 export const FORM_URLENCOED_MEDIA_TYPE: string = 'application/x-www-form-urlencoded';
 export const HTTP_401_STATUS = { status: 401 };
 export const JSON_MEDIA_TYPE: string = 'application/json;charset=UTF-8';

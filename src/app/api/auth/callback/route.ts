@@ -32,6 +32,6 @@ export async function GET(req: NextRequest) {
 
   // Send the user back to the Invotastic application.
   const tenantDomain = IS_LOCALHOST ? '' : `${callbackData!.tenantDomainName}.`;
-  const appUrl = callbackData!.returnUrl || `http://${tenantDomain}${INVOTASTIC_HOST}`;
+  const appUrl = callbackData!.returnUrl || `https://${tenantDomain}${INVOTASTIC_HOST}`;
   return NextResponse.redirect(appUrl, { status: 302, headers: NO_CACHE_HEADERS });
 }
